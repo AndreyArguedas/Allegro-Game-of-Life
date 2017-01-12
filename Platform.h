@@ -17,6 +17,7 @@ public:
 	void disactivateCell(int,int);
 	void setNextState(int,int,bool);
 	bool getState(int,int);
+	void restart();
 	void update();
 	string toString();
 	~Platform(void);

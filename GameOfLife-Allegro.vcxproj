@@ -64,11 +64,13 @@
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="Control.h" />
+    <ClInclude Include="GraphicInterface.h" />
     <ClInclude Include="Platform.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cell.cpp" />
     <ClCompile Include="Control.cpp" />
+    <ClCompile Include="GraphicInterface.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>

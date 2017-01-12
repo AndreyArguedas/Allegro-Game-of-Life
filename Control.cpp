@@ -10,11 +10,9 @@ void Control::initializePlatform(int r, int c){
 }
 
 void Control::generateLife(){
-	initializePlatform(5,5);
-	plat->activateCell(2,2);
-	plat->activateCell(3,1);
-	plat->activateCell(3,2);
-	evolve();
+	initializePlatform(18,20);
+	level1();
+	level2();
 }
 
 void Control::evolve(){
@@ -33,8 +31,9 @@ void Control::evolve(){
 					plat->setNextState(i,j,true);
 				
 			}
+		GraphicInterface::printPlatform(plat->toString());
+		Sleep(800);
 		plat->update();
-		cout<<plat->getPoupulation()<<endl;
 }
 
 int Control::lateralNeighbords(int i, int j){
@@ -63,6 +62,32 @@ int Control::diagonalNeighbords(int i,int j){
 	return result;
 }
 
+void Control::level1(){
+	for(int i = 0; i < plat->getColumns(); i++){
+		plat->activateCell(10,i);
+		plat->activateCell(11,i);
+	}
+	for(int i = 0; i < 40; i++){
+		evolve();
+	}
+}
+
+void Control::level2(){
+	int r,c = 0;
+
+	srand(unsigned(time(0)));
+	for(int i = 0; i < 30; i++){
+		r = rand() % plat->getRows();
+		c = rand() % plat->getColumns();
+		plat->activateCell(r,c);
+	}
+	for(int i = 0; i < 40; i++){
+		evolve();
+	}
+}
+
+
 Control::~Control(void)
 {
+	delete plat;
 }

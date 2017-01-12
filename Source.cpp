@@ -3,5 +3,6 @@
 int main(){
 	Control * c = new Control();
 	c->generateLife();
-	system("pause");
+	cin.get();
+	delete c;
 }

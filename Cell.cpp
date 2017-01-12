@@ -28,7 +28,7 @@ string Cell::toString(){
 	if(state)
 		s<<"O";
 	else
-		s<<"X";
+		s<<"-";
 	return s.str();
 }
 

@@ -46,6 +46,13 @@ string Platform::toString(){
 	return s.str();
 }
 
+void Platform::restart(){
+	for(int i = 0; i < rows ; i++)
+		for(int j = 0; j < columns; j++)
+			if(matrix[i][j] != NULL)
+				disactivateCell(i,j);
+}
+
 int Platform::getPoupulation(){
 	int result = 0;
 	for(int i = 0; i < rows ; i++)
