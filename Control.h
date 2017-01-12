@@ -6,8 +6,10 @@ class Control
 {
 private:
 	Platform * plat;
+	GraphicInterface * gi;
 public:
 	Control(void);
+	int mapping(int,int,int,int,int);
 	void level1();
 	void level2();
 	void initializePlatform(int,int);

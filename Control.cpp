@@ -3,6 +3,7 @@
 
 Control::Control(void)
 {
+	gi = new GraphicInterface();
 }
 
 void Control::initializePlatform(int r, int c){
@@ -11,10 +12,30 @@ void Control::initializePlatform(int r, int c){
 
 void Control::generateLife(){
 	initializePlatform(18,20);
-	GraphicInterface::level1();
+	int fila,columna = 0;
+	bool quit = false;
+	ALLEGRO_EVENT_QUEUE *evento =al_create_event_queue();
+	al_register_event_source(evento,al_get_mouse_event_source());
+	al_register_event_source(evento,al_get_display_event_source(gi->display));
+	ALLEGRO_MOUSE_STATE mouseState;
 	level1();
-	GraphicInterface::level2();
-	level2();
+	while(!quit){
+	ALLEGRO_EVENT e;
+	al_wait_for_event(evento,&e);
+		if(e.type==ALLEGRO_EVENT_MOUSE_BUTTON_DOWN){
+			if(e.mouse.button&1){
+				fila=e.mouse.y;
+				columna=e.mouse.x;
+				fila = mapping(fila,0,840,0,19);
+				columna = mapping(columna,0,840,0,17);
+				cout<<fila<<"fsd"<<columna<<endl;
+			}
+		}
+		else if(e.type==ALLEGRO_EVENT_DISPLAY_CLOSE){exit(0);}
+	}
+	//level1();
+	//gi->level2();
+	//level2();
 }
 
 void Control::evolve(){
@@ -33,7 +54,7 @@ void Control::evolve(){
 					plat->setNextState(i,j,true);
 				
 			}
-		GraphicInterface::printPlatform(plat->toString());
+		gi->printPlatform(plat->toString());
 		Sleep(800);
 		plat->update();
 }
@@ -88,8 +109,13 @@ void Control::level2(){
 	}
 }
 
+int Control::mapping(int num,int minin,int maxin,int minout,int maxout){
+	 return (num - minin) * (maxout - minout) / (maxin - minin) + minout;
+}
+
 
 Control::~Control(void)
 {
 	delete plat;
+	delete gi;
 }

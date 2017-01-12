@@ -2,7 +2,7 @@
 
 int main(){
 	Control * c = new Control();
-	GraphicInterface::header();
+	//c->gi->header();
 	c->generateLife();
 	cin.get();
 	delete c;
