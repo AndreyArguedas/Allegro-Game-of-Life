@@ -10,10 +10,10 @@ void Control::initializePlatform(int r, int c){
 }
 
 void Control::generateLife(){
-	initializePlatform(10,10);
-	plat->activateCell(0,0);
-	plat->activateCell(0,1);
-	plat->activateCell(0,2);
+	initializePlatform(5,5);
+	plat->activateCell(2,2);
+	plat->activateCell(3,1);
+	plat->activateCell(3,2);
 	evolve();
 }
 
@@ -22,12 +22,18 @@ void Control::evolve(){
 		for(int j = 0; j < plat->getColumns(); j++){
 			int neighbords = lateralNeighbords(i,j) + diagonalNeighbords(i,j);
 			if(neighbords < 2)
-				plat->disactivateCell(i,j);
-			if(neighbords == 3)
-				plat->activateCell(i,j);
-			if(neighbords >= 4)
-				plat->disactivateCell(i,j);
-		}
+				plat->setNextState(i,j,false);
+			if(neighbords > 3)
+				plat->setNextState(i,j,false);
+			if(plat->getState(i,j)){
+				if(neighbords == 3 || neighbords == 2)
+					plat->setNextState(i,j,true);
+			}
+			else if(!plat->getState(i,j) && neighbords == 3)
+					plat->setNextState(i,j,true);
+				
+			}
+		plat->update();
 		cout<<plat->getPoupulation()<<endl;
 }
 

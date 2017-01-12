@@ -31,6 +31,10 @@ bool Platform::getState(int r, int c){
 	return matrix[r][c]->getState();
 }
 
+void Platform::setNextState(int r, int c,bool ns){
+	matrix[r][c]->setNextState(ns);
+}
+
 string Platform::toString(){
 	stringstream s;
 	for(int i = 0; i < rows ; i++){
@@ -51,6 +55,12 @@ int Platform::getPoupulation(){
 	return result;
 }
 
+void Platform::update(){
+	for(int i = 0; i < rows ; i++)
+		for(int j = 0; j < columns; j++)
+			if(matrix[i][j] != NULL)
+				matrix[i][j]->setState(matrix[i][j]->getNextState());
+}
 
 Platform::~Platform(void)
 {

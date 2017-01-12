@@ -15,7 +15,9 @@ public:
 	void setColumns(int);
 	void activateCell(int,int);
 	void disactivateCell(int,int);
+	void setNextState(int,int,bool);
 	bool getState(int,int);
+	void update();
 	string toString();
 	~Platform(void);
 };

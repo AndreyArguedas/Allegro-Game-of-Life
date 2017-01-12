@@ -4,6 +4,7 @@
 Cell::Cell(void)
 {
 	state = false;
+	nextState = false;
 }
 
 bool Cell::getState(){
@@ -12,6 +13,14 @@ bool Cell::getState(){
 
 void Cell::setState(bool ns){
 	state = ns;
+}
+
+bool Cell::getNextState(){
+	return nextState;
+}
+
+void Cell::setNextState(bool ns){
+	nextState = ns;
 }
 
 string Cell::toString(){
