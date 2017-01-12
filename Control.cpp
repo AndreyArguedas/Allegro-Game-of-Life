@@ -11,7 +11,9 @@ void Control::initializePlatform(int r, int c){
 
 void Control::generateLife(){
 	initializePlatform(18,20);
+	GraphicInterface::level1();
 	level1();
+	GraphicInterface::level2();
 	level2();
 }
 
@@ -76,7 +78,7 @@ void Control::level2(){
 	int r,c = 0;
 
 	srand(unsigned(time(0)));
-	for(int i = 0; i < 30; i++){
+	for(int i = 0; i < 35; i++){
 		r = rand() % plat->getRows();
 		c = rand() % plat->getColumns();
 		plat->activateCell(r,c);

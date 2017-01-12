@@ -11,6 +11,55 @@ void GraphicInterface::gotoXY(int x,int y){
 	SetConsoleCursorPosition(output, position);
 }
 
+void GraphicInterface::header(){
+HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+SetConsoleTextAttribute(h, FOREGROUND_GREEN| FOREGROUND_INTENSITY);
+int x = 15; int y = 15;
+gotoXY(x,y++);
+cout<<" #####  ####### #       ### ######      #####  ####### ######  ####### ";gotoXY(x,y++);
+cout<<"#     # #     # #        #  #     #    #     # #     # #     # #       ";gotoXY(x,y++);
+cout<<"#       #     # #        #  #     #    #       #     # #     # #       ";gotoXY(x,y++);
+cout<<" #####  #     # #        #  #     #    #       #     # #     # #####   ";gotoXY(x,y++);
+cout<<"      # #     # #        #  #     #    #       #     # #     # #       ";gotoXY(x,y++);
+cout<<"#     # #     # #        #  #     #    #     # #     # #     # #       ";gotoXY(x,y++);
+cout<<" #####  ####### ####### ### ######      #####  ####### ######  ####### ";gotoXY(x,y++);
+cin.get();
+system("cls");
+}
+
+void GraphicInterface::level1(){
+HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+SetConsoleTextAttribute(h, FOREGROUND_GREEN| FOREGROUND_INTENSITY);
+int x = 15; int y = 15;
+gotoXY(x,y++);
+cout<<"#       ####### #     # ####### #             #   ";gotoXY(x,y++);
+cout<<"#       #       #     # #       #            ##   ";gotoXY(x,y++);
+cout<<"#       #       #     # #       #           # #   ";gotoXY(x,y++);
+cout<<"#       #####   #     # #####   #             #   ";gotoXY(x,y++);
+cout<<"#       #        #   #  #       #             #   ";gotoXY(x,y++);
+cout<<"#       #         # #   #       #             #   ";gotoXY(x,y++);
+cout<<"####### #######    #    ####### #######     ##### ";gotoXY(x,y++);
+cin.get();
+system("cls");
+}
+
+void GraphicInterface::level2(){
+system("cls");
+HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+SetConsoleTextAttribute(h, FOREGROUND_GREEN| FOREGROUND_INTENSITY);
+int x = 15; int y = 15;
+gotoXY(x,y++);
+cout<<"#       ####### #     # ####### #           #####  ";gotoXY(x,y++);
+cout<<"#       #       #     # #       #          #     # ";gotoXY(x,y++);
+cout<<"#       #       #     # #       #                # ";gotoXY(x,y++);
+cout<<"#       #####   #     # #####   #           #####  ";gotoXY(x,y++);
+cout<<"#       #        #   #  #       #          #       ";gotoXY(x,y++);
+cout<<"#       #         # #   #       #          #       ";gotoXY(x,y++);
+cout<<"####### #######    #    ####### #######    ####### ";gotoXY(x,y++);
+cin.get();
+system("cls");
+}
+
 void GraphicInterface::printPlatform(string plat){
 	int x = 25;int y = 0;
 	HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
