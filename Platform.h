@@ -19,6 +19,7 @@ public:
 	bool getState(int,int);
 	void restart();
 	void update();
+	void changeState(int,int);
 	string toString();
 	~Platform(void);
 };

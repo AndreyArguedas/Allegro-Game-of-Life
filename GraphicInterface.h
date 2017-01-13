@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <allegro5\allegro.h>
 #include <allegro5\allegro_native_dialog.h>
 #include <allegro5\allegro_font.h>
@@ -22,6 +23,8 @@ public:
 	void header();
 	void level1();
 	void level2();
+	void start();
+	void timesLeft(int);
 	ALLEGRO_DISPLAY getDisplay();
 	~GraphicInterface(void);
 };

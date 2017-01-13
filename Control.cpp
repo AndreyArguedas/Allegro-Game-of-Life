@@ -14,31 +14,44 @@ void Control::generateLife(){
 	initializePlatform(18,20);
 	int fila,columna = 0;
 	bool quit = false;
+	bool evolving = false;
+	bool activated = false;
+	gi->start();
 	ALLEGRO_EVENT_QUEUE *evento =al_create_event_queue();
 	al_register_event_source(evento,al_get_mouse_event_source());
 	al_register_event_source(evento,al_get_display_event_source(gi->display));
+	ALLEGRO_EVENT_QUEUE *evento2 =al_create_event_queue();
+	al_register_event_source(evento2,al_get_mouse_event_source());
+	al_register_event_source(evento2,al_get_display_event_source(gi->display));
 	ALLEGRO_MOUSE_STATE mouseState;
-	level1();
-	while(!quit){
+	gi->printPlatform(plat->toString());
 	ALLEGRO_EVENT e;
+	while(!quit){
+
 	al_wait_for_event(evento,&e);
+	
 		if(e.type==ALLEGRO_EVENT_MOUSE_BUTTON_DOWN){
 			if(e.mouse.button&1){
 				fila=e.mouse.y;
 				columna=e.mouse.x;
-				fila = mapping(fila,0,840,0,19);
-				columna = mapping(columna,0,840,0,17);
-				cout<<fila<<"fsd"<<columna<<endl;
+				fila = mapping(fila,0,700,0,18);
+				columna = mapping(columna,0,800,0,20);
+				if(fila < 18 && columna < 20)
+					plat->changeState(fila,columna);
+				gi->printPlatform(plat->toString());
 			}
+			if(e.mouse.button&2){
+				evolve();
+			}
+			
 		}
-		else if(e.type==ALLEGRO_EVENT_DISPLAY_CLOSE){exit(0);}
+		else if(e.type==ALLEGRO_EVENT_DISPLAY_CLOSE){quit = true;}
 	}
-	//level1();
-	//gi->level2();
-	//level2();
 }
 
 void Control::evolve(){
+
+for(int x = 0; x <= 20; x++){
 	for(int i = 0; i < plat->getRows() ; i++)
 		for(int j = 0; j < plat->getColumns(); j++){
 			int neighbords = lateralNeighbords(i,j) + diagonalNeighbords(i,j);
@@ -54,9 +67,14 @@ void Control::evolve(){
 					plat->setNextState(i,j,true);
 				
 			}
+		gi->timesLeft(20 -x );
 		gi->printPlatform(plat->toString());
-		Sleep(800);
+		Sleep(400);
 		plat->update();
+		gi->printPlatform(plat->toString());
+}
+	gi->start();
+	al_flip_display();
 }
 
 int Control::lateralNeighbords(int i, int j){

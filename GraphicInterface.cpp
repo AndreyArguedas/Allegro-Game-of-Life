@@ -12,10 +12,27 @@ GraphicInterface::GraphicInterface(void)
 	al_init_primitives_addon(); //Funcion para dibujar figuras
 	al_install_keyboard();//Instalar el teclado
 	al_set_new_display_flags(ALLEGRO_RESIZABLE|ALLEGRO_WINDOWED);
-	display = al_create_display(800,700);
+	display = al_create_display(1300,700);
 	al_set_window_title(display,"GAME OF LIFE");
 	al_clear_to_color(al_map_rgb(0,0,0));
 	al_flip_display();
+}
+
+void GraphicInterface::start(){
+	ALLEGRO_FONT * font_48 = al_load_font("Black.ttf",36,NULL);
+	al_draw_filled_rectangle(800,0,1300,700,al_map_rgb(0,0,0));
+	al_draw_text(font_48,al_map_rgb(76,145,65),1000,150,ALLEGRO_ALIGN_CENTRE,"RIGHT CLICK TO");
+	al_draw_text(font_48,al_map_rgb(76,145,65),1000,250,ALLEGRO_ALIGN_CENTRE,"GENERATE LIFE");
+}
+
+void GraphicInterface::timesLeft(int tl){
+	stringstream convert;
+	convert << tl;
+	string r = convert.str();
+	al_draw_filled_rectangle(800,0,1300,700,al_map_rgb(0,0,0));
+	ALLEGRO_FONT * font_48 = al_load_font("Black.ttf",36,NULL);
+	al_draw_text(font_48,al_map_rgb(76,145,65),1000,150,ALLEGRO_ALIGN_CENTRE,"GENERATIONS LEFT");
+	al_draw_text(font_48,al_map_rgb(76,145,65),1000,250,ALLEGRO_ALIGN_CENTRE,r.c_str());
 }
 
 
@@ -25,54 +42,6 @@ void GraphicInterface::gotoXY(int x,int y){
 	SetConsoleCursorPosition(output, position);
 }
 
-void GraphicInterface::header(){
-HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-SetConsoleTextAttribute(h, FOREGROUND_GREEN| FOREGROUND_INTENSITY);
-int x = 15; int y = 15;
-gotoXY(x,y++);
-cout<<" #####  ####### #       ### ######      #####  ####### ######  ####### ";gotoXY(x,y++);
-cout<<"#     # #     # #        #  #     #    #     # #     # #     # #       ";gotoXY(x,y++);
-cout<<"#       #     # #        #  #     #    #       #     # #     # #       ";gotoXY(x,y++);
-cout<<" #####  #     # #        #  #     #    #       #     # #     # #####   ";gotoXY(x,y++);
-cout<<"      # #     # #        #  #     #    #       #     # #     # #       ";gotoXY(x,y++);
-cout<<"#     # #     # #        #  #     #    #     # #     # #     # #       ";gotoXY(x,y++);
-cout<<" #####  ####### ####### ### ######      #####  ####### ######  ####### ";gotoXY(x,y++);
-cin.get();
-system("cls");
-}
-
-void GraphicInterface::level1(){
-HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-SetConsoleTextAttribute(h, FOREGROUND_GREEN| FOREGROUND_INTENSITY);
-int x = 15; int y = 15;
-gotoXY(x,y++);
-cout<<"#       ####### #     # ####### #             #   ";gotoXY(x,y++);
-cout<<"#       #       #     # #       #            ##   ";gotoXY(x,y++);
-cout<<"#       #       #     # #       #           # #   ";gotoXY(x,y++);
-cout<<"#       #####   #     # #####   #             #   ";gotoXY(x,y++);
-cout<<"#       #        #   #  #       #             #   ";gotoXY(x,y++);
-cout<<"#       #         # #   #       #             #   ";gotoXY(x,y++);
-cout<<"####### #######    #    ####### #######     ##### ";gotoXY(x,y++);
-cin.get();
-system("cls");
-}
-
-void GraphicInterface::level2(){
-system("cls");
-HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
-SetConsoleTextAttribute(h, FOREGROUND_GREEN| FOREGROUND_INTENSITY);
-int x = 15; int y = 15;
-gotoXY(x,y++);
-cout<<"#       ####### #     # ####### #           #####  ";gotoXY(x,y++);
-cout<<"#       #       #     # #       #          #     # ";gotoXY(x,y++);
-cout<<"#       #       #     # #       #                # ";gotoXY(x,y++);
-cout<<"#       #####   #     # #####   #           #####  ";gotoXY(x,y++);
-cout<<"#       #        #   #  #       #          #       ";gotoXY(x,y++);
-cout<<"#       #         # #   #       #          #       ";gotoXY(x,y++);
-cout<<"####### #######    #    ####### #######    ####### ";gotoXY(x,y++);
-cin.get();
-system("cls");
-}
 
 void GraphicInterface::printPlatform(string plat){
 	int r = 0;int c = 0;

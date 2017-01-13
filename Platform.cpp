@@ -35,6 +35,10 @@ void Platform::setNextState(int r, int c,bool ns){
 	matrix[r][c]->setNextState(ns);
 }
 
+void Platform::changeState(int r,int c){
+	matrix[r][c]->setState(!matrix[r][c]->getState());
+}
+
 string Platform::toString(){
 	stringstream s;
 	for(int i = 0; i < rows ; i++){
