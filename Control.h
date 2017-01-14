@@ -10,8 +10,6 @@ private:
 public:
 	Control(void);
 	int mapping(int,int,int,int,int);
-	void level1();
-	void level2();
 	void initializePlatform(int,int);
 	void generateLife();
 	void evolve();

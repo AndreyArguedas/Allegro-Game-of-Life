@@ -9,8 +9,8 @@ GraphicInterface::GraphicInterface(void)
 	al_install_mouse();
 	al_install_audio();
 	al_init_acodec_addon();
-	al_init_primitives_addon(); //Funcion para dibujar figuras
-	al_install_keyboard();//Instalar el teclado
+	al_init_primitives_addon();
+	al_install_keyboard();
 	al_set_new_display_flags(ALLEGRO_RESIZABLE|ALLEGRO_WINDOWED);
 	display = al_create_display(1300,700);
 	al_set_window_title(display,"GAME OF LIFE");
@@ -33,13 +33,6 @@ void GraphicInterface::timesLeft(int tl){
 	ALLEGRO_FONT * font_48 = al_load_font("Black.ttf",36,NULL);
 	al_draw_text(font_48,al_map_rgb(76,145,65),1000,150,ALLEGRO_ALIGN_CENTRE,"GENERATIONS LEFT");
 	al_draw_text(font_48,al_map_rgb(76,145,65),1000,250,ALLEGRO_ALIGN_CENTRE,r.c_str());
-}
-
-
-void GraphicInterface::gotoXY(int x,int y){
-	COORD position = { x, y };
-	HANDLE output = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleCursorPosition(output, position);
 }
 
 

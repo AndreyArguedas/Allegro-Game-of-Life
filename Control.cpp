@@ -42,8 +42,7 @@ void Control::generateLife(){
 			}
 			if(e.mouse.button&2){
 				evolve();
-			}
-			
+			}	
 		}
 		else if(e.type==ALLEGRO_EVENT_DISPLAY_CLOSE){quit = true;}
 	}
@@ -103,29 +102,6 @@ int Control::diagonalNeighbords(int i,int j){
 	return result;
 }
 
-void Control::level1(){
-	for(int i = 0; i < plat->getColumns(); i++){
-		plat->activateCell(10,i);
-		plat->activateCell(11,i);
-	}
-	for(int i = 0; i < 40; i++){
-		evolve();
-	}
-}
-
-void Control::level2(){
-	int r,c = 0;
-
-	srand(unsigned(time(0)));
-	for(int i = 0; i < 35; i++){
-		r = rand() % plat->getRows();
-		c = rand() % plat->getColumns();
-		plat->activateCell(r,c);
-	}
-	for(int i = 0; i < 40; i++){
-		evolve();
-	}
-}
 
 int Control::mapping(int num,int minin,int maxin,int minout,int maxout){
 	 return (num - minin) * (maxout - minout) / (maxin - minin) + minout;

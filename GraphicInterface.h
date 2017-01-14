@@ -18,7 +18,6 @@ class GraphicInterface
 public:
 	ALLEGRO_DISPLAY * display;
 	GraphicInterface(void);	
-	void gotoXY(int, int);
 	void printPlatform(string);
 	void header();
 	void level1();
