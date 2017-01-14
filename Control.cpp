@@ -17,6 +17,7 @@ void Control::generateLife(){
 	bool evolving = false;
 	bool activated = false;
 	gi->start();
+	gi->music();
 	ALLEGRO_EVENT_QUEUE *evento =al_create_event_queue();
 	al_register_event_source(evento,al_get_mouse_event_source());
 	al_register_event_source(evento,al_get_display_event_source(gi->display));

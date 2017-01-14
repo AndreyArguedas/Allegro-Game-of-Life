@@ -24,6 +24,7 @@ public:
 	void level2();
 	void start();
 	void timesLeft(int);
+	void music();
 	ALLEGRO_DISPLAY getDisplay();
 	~GraphicInterface(void);
 };

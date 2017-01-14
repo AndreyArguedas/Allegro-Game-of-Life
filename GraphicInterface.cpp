@@ -25,6 +25,15 @@ void GraphicInterface::start(){
 	al_draw_text(font_48,al_map_rgb(76,145,65),1000,250,ALLEGRO_ALIGN_CENTRE,"GENERATE LIFE");
 }
 
+void GraphicInterface::music(){
+	ALLEGRO_SAMPLE * song = al_load_sample("Lost_Time.wav");
+	al_reserve_samples(1);
+	ALLEGRO_SAMPLE_INSTANCE * songInstance = al_create_sample_instance(song);
+	al_set_sample_instance_playmode(songInstance,ALLEGRO_PLAYMODE_LOOP);
+	al_attach_sample_instance_to_mixer(songInstance,al_get_default_mixer());
+	al_play_sample_instance(songInstance);
+}
+
 void GraphicInterface::timesLeft(int tl){
 	stringstream convert;
 	convert << tl;
